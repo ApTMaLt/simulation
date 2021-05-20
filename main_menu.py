@@ -21,6 +21,7 @@ class Window(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('test1.ui', self)  # Загружаем дизайн
+        self.setWindowTitle('Главное меню')
         self.pushButton.clicked.connect(self.scroll_area)
         self.pushButton_2.clicked.connect(self.close_window)
         self.pushButton_2.setEnabled(False)

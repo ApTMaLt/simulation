@@ -8,6 +8,7 @@ background_colour = (255, 255, 255)
 
 
 def addVectors(ygol1, dlina1, ygol2, dlina2):
+
     x = math.sin(ygol1) * dlina1 + math.sin(ygol2) * dlina2
     y = math.cos(ygol1) * dlina1 + math.cos(ygol2) * dlina2
 
@@ -66,7 +67,7 @@ class Particle():
         self.y -= math.cos(self.ygol) * self.speed
         self.speed *= self.peretaskivanie
 
-    def bounce(self):
+    def stena(self):
         if self.x > width - self.size:
             self.x = 2 * (width - self.size) - self.x
             self.ygol = - self.ygol
@@ -90,8 +91,6 @@ while running_menu:
     gg = main_menu.main_menu()
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption('Simulation')
-    print(gg[-1])
-    print(gg[-2])
     mass_of_air = gg[-1] / 100
     elasticity = gg[-2] / 10
     number_of_particles = gg[0]
@@ -103,7 +102,7 @@ while running_menu:
         x = random.randint(size, width - size)
         y = random.randint(size, height - size)
 
-        particle = Particle(x, y, size, density * math.pi * size ** 2)
+        particle = Particle(x, y, size, density * size ** 2)
         particle.colour = (200 - density * 20, 200 - density * 20, 255)
         particle.speed = random.random()
         particle.ygol = random.uniform(0, math.pi * 2)
@@ -133,7 +132,7 @@ while running_menu:
 
         for i, particle in enumerate(my_particles):
             particle.move()
-            particle.bounce()
+            particle.stena()
             for particle2 in my_particles[i + 1:]:
                 collide(particle, particle2)
             particle.display()
