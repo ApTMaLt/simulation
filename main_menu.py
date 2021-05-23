@@ -52,8 +52,8 @@ class Window(QMainWindow):
         for x in range(self.kolvo):
             self.seperator_horizontal = QHSeperationLine()
             self.size = QSlider(Qt.Horizontal)
-            self.size.setMinimum(20)
-            self.size.setMaximum(50)
+            self.size.setMinimum(40)
+            self.size.setMaximum(70)
             self.size.setValue(random.randint(20, 50))
             self.density = QSlider(Qt.Horizontal)
             self.density.setMinimum(1)
